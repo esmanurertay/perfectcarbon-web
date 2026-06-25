@@ -1,23 +1,22 @@
 "use client";
-
 import React, { useState } from 'react';
 
 export default function Navbar() {
   const [isMegaMenuOpen, setIsMegaMenuOpen] = useState(false);
-
   const productBrands = [
     {
       name: "Van de Wiele Çözümleri",
-      links: ["Karbon Mekikler", "Rapier Çubukları", "Hassas İğne Grupları", "Tahrik Dişlileri"]
+      links: ["Carbon Rapier", "Carbon Rapier Başlıkları", "Carbon Rapier Dişli", "Kesim Makasları"]
+    },
+        {
+      name: "Schönherr Alpha",
+      links: ["Carbon Rapier", "Carbon Rapier Başlıkları", "Carbon Rapier Dişli", "Kesim Makasları"]
     },
     {
       name: "Dornier Sistemleri",
-      links: ["Karbon Rapier Şeritler", "Kancalı Kafalar", "Gidici/Kalıcı Tutucular", "Aşınma Plakaları"]
-    },
-    {
-      name: "Schönherr Alpha",
-      links: ["Yüksek Mukavemetli Şişler", "Kesim Makasları", "Karbon Kompozit Şasiler", "Yönlendirici Raylar"]
+      links: ["Carbon Rapier", "Carbon Rapier Başlıkları", "Carbon Rapier Dişli", "Kesim Makasları"]
     }
+
   ];
 
   return (
@@ -86,7 +85,6 @@ export default function Navbar() {
 
               {/* ALT BİLGİ ŞERİDİ */}
               <div className="mt-8 pt-4 border-t border-white/5 flex items-center justify-between text-[11px] text-white/40 animate-fade-in">
-                <span>* Tüm parçalar yüksek modüllü T800 karbon elyaftan üretilmektedir.</span>
                 
                 {/* Sağ Taraf Buton Grubu */}
                 <div className="flex items-center gap-5">
