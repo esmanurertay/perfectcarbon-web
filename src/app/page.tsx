@@ -1,3 +1,4 @@
+import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import Process from '@/components/Process'; 
@@ -8,20 +9,35 @@ import Contact from '@/components/Contact';
 
 export default function Home() {
   return (
-    <main className="relative min-h-screen bg-white antialiased selection:bg-red-500 selection:text-white">
-      {/* Gezinme Çubuğu */}      
-      {/* Karşılama Alanı (Light) */}
-      <Hero />
+    <main className="relative min-h-screen bg-white antialiased selection:bg-red-500 selection:text-white scroll-smooth">
+      {/* Gezinme Çubuğu */}     
+      <Navbar />
 
+      {/* Karşılama Alanı (Light) */}
+      <div id="home">
+        <Hero />
+      </div>
+      
+    
+      {/* Hakkımızda Alanı */}
+      <div id="about">
+        <About /> 
+      </div>
       {/* İstatistik Alanı (Light) */}
       <Stats />
 
       {/* Süreç Akış Alanı (Sinematik Dark Geçişi) */}
-      <Process /> {/* 👈 Stats'ın hemen altına yerleştirdik */}
-      <Brands /> {/* 👈 Process'in hemen altına yerleştirdik */ }
-      <Products /> {/* 👈 Brands'in hemen altına yerleştirdik */ }
-      <About /> {/* 👈 Products'in hemen altına yerleştirdik */ }
-      <Contact /> {/* 👈 About'in hemen altına yerleştirdik */ }
+      <Process /> 
+      <Brands /> 
+        {/* Ürünler Alanı */}
+      <div id="products">
+        <Products /> 
+      </div>
+
+      {/* İletişim Alanı */}
+      <div id="contact">
+        <Contact /> 
+      </div>
     </main>
   );
 }

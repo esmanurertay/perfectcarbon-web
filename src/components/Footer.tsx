@@ -36,22 +36,25 @@ export default function Footer() {
   ];
 
   return (
-    /* Arka plan #090909 yapılarak sitenin o asil karanlık tonuna sabitlendi */
-    <footer className="w-full bg-[#090909] text-neutral-400 pt-20 pb-12 px-6 md:px-12 relative overflow-hidden border-t border-white/5">
+    /* Arka plan açık tonlara (#f9f9f9 veya bg-neutral-50) çekildi, metinler belirginleştirildi */
+    <footer className="w-full bg-[#f9f9f9] text-neutral-600 pt-20 pb-12 px-6 md:px-12 relative overflow-hidden border-t border-neutral-200">
       
-      {/* JUNCTION MASK: Contact bileşeninin bitişindeki red-500 rengini, footer'ın #090909 rengiyle pürüzsüzce eritir */}
-      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-red-500/10 to-transparent pointer-events-none" />
+      {/* JUNCTION MASK: Üst bileşenden gelen geçişi light temaya uygun, hafif kırmızımsı bir sıcaklıkla eritir */}
+      <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-red-500/5 to-transparent pointer-events-none" />
 
-      <div className="w-full max-w-6xl mx-auto relative z-10">
+      <div className="w-full max-w-7xl mx-auto relative z-10">
         
         {/* ÜST DÜZEY: Kurumsal Bilgi ve Navigasyon Link Grupları */}
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8 pb-16">
           
           {/* Logo ve Kısa Tanım Alanı (4 Kolon) */}
           <div className="col-span-2 md:col-span-4 flex flex-col items-start gap-4">
-            <span className="font-sans font-medium text-white tracking-tight text-sm select-none">
-              Perfect <span className="opacity-50 font-light">Carbon</span> Rapier
-            </span>
+            {/* Logo Bölümü */}
+            <a href="#home" className="flex items-center gap-2 cursor-pointer">
+              <div className="w-auto h-12 relative">
+                <img src="/images/perfect-logo 1.svg" alt="Perfect Carbon Rapier Logo" className="w-auto h-14 object-cover" />
+              </div>
+            </a>
             <p className="text-xs text-neutral-500 max-w-xs leading-relaxed">
               Dokuma tezgahları için yüksek hassasiyetli, dayanıklı ve hafif karbon fiber rapier bileşenleri tasarımı ve üretimi.
             </p>
@@ -61,7 +64,7 @@ export default function Footer() {
           <div className="col-span-2 md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {links.map((group, index) => (
               <div key={index} className="flex flex-col items-start gap-4">
-                <span className="text-[10px] font-bold text-white uppercase tracking-widest select-none">
+                <span className="text-[10px] font-bold text-neutral-800 uppercase tracking-widest select-none">
                   {group.title}
                 </span>
                 <ul className="flex flex-col items-start gap-2.5">
@@ -69,7 +72,7 @@ export default function Footer() {
                     <li key={itemIdx}>
                       <a 
                         href={item.href} 
-                        className="text-xs text-neutral-400 hover:text-white transition-colors duration-300 font-normal"
+                        className="text-xs text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-normal"
                       >
                         {item.name}
                       </a>
@@ -83,22 +86,28 @@ export default function Footer() {
         </div>
 
         {/* ALT DÜZEY: İnce Çizgi ve Yasal Metinler */}
-        <div className="w-full pt-8 border-t border-white/5 flex flex-col sm:flex-row items-center justify-between gap-6 text-[11px] text-neutral-500">
+        <div className="w-full pt-8 border-t border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-6 text-[11px] text-neutral-400">
           
-          {/* Telif Hakkı Bloğu */}
+          {/* Telif Hakkı Bloğu ve Geliştirici İmzası */}
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <span>Copyright © {currentYear} Perfect Carbon Rapier.</span>
-            <span className="text-neutral-700 hidden sm:inline">|</span>
-            <span>Tüm hakları saklıdır.</span>
+            <span>Copyright © {currentYear} Perfect Carbon Rapier. Tüm hakları saklıdır.</span>
+            <span className="text-neutral-300 hidden sm:inline">|</span>
+            <span className="flex items-center gap-1">
+              Developed by{" "}
+              <a 
+                href="https://www.esmanurertay.com" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="underline text-red-600 hover:text-neutral-800 transition-colors duration-300 font-medium"
+              >
+                Esma Nur Ertay
+              </a>
+            </span>
           </div>
 
           {/* Menşei ve Lokasyon Künyesi */}
-          <div className="flex items-center gap-4 text-neutral-500">
+          <div className="flex items-end gap-4 text-neutral-400">
             <span>Gaziantep, Türkiye</span>
-            <span className="text-neutral-700">|</span>
-            <span className="font-mono text-[9px] tracking-wider uppercase text-neutral-600">
-              Precision Engineering
-            </span>
           </div>
 
         </div>

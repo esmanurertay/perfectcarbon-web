@@ -60,12 +60,12 @@ export default function Process() {
 
   return (
     <section ref={sectionRef} className="w-full bg-[#0a0a0a] pt-20 pb-24 px-6 md:px-12 text-white overflow-hidden">
-      <div className="w-full max-w-5xl mx-auto flex flex-col items-center">
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
         
         {/* ÜST ALAN: Başlık ve Süreç İsmi (Yan yana çok kompakt yerleşim) */}
         <div className={`w-full flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="text-left">
-            <span className="text-[10px] font-bold tracking-[0.2em] text-neutral-500 uppercase block mb-2">Process</span>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-red-600 uppercase block mb-2">Process</span>
             <h2 className="text-3xl md:text-4xl font-normal tracking-tight font-sans">From design to delivery<span className="text-red-600">.</span></h2>
           </div>
           <p className="text-xs text-neutral-500 max-w-xs text-left md:text-right font-normal leading-relaxed">

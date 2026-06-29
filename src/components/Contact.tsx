@@ -35,7 +35,7 @@ export default function Contact() {
       {/* SPATIAL MASK: Yatay gradyan geçişinin sol sınırda yumuşak erimesi için sol sınıra loş bir yumuşatıcı koyduk */}
       <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#090909] to-transparent pointer-events-none z-0" />
 
-      <div className="w-full max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start relative z-10">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start relative z-10">
         
         {/* SOL ALAN: Güçlü Tipografi & İletişim Bilgileri */}
         <div className={`lg:col-span-5 flex flex-col items-start text-left transition-all duration-1000 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>

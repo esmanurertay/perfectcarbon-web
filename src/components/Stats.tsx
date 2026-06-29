@@ -112,10 +112,10 @@ export default function Stats() {
 
   return (
     <section ref={sectionRef} className="w-full bg-white pt-12 pb-24 px-6 md:px-12 overflow-hidden">
-      <div className="w-full max-w-5xl mx-auto flex flex-col items-start text-left">
+      <div className="w-full max-w-7xl mx-auto flex flex-col items-start text-left">
         
         {/* Üst Küçük Künye */}
-        <span className={`text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+        <span className={`text-xs font-bold tracking-[0.2em] text-red-600 uppercase mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           Stats
         </span>
 

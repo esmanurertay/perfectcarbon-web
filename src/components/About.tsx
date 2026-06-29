@@ -37,13 +37,13 @@ export default function About() {
         <div className="lg:col-span-5 flex flex-col items-start text-left">
           
           {/* Üst Küçük Künye */}
-          <span className={`text-xs font-bold tracking-[0.2em] text-gray-400 uppercase mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
+          <span className={`text-xs font-bold tracking-[0.2em] text-red-600 uppercase mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
             About Us
           </span>
 
           {/* Büyük Özgün Başlık */}
           <h2 className={`text-3xl md:text-4xl lg:text-5xl font-normal font-sans text-black tracking-tight leading-[1.1] transition-all duration-700 delay-100 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            Crafting the future of <br />
+            Crafting the future of
             weaving technology<span className="text-red-600">.</span>
           </h2>
 

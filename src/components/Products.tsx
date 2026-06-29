@@ -72,7 +72,7 @@ export default function ProductsSection() {
         {/* ÜST ALAN */}
         <div className="w-full flex items-end justify-between border-b border-neutral-100 pb-5 mb-8">
           <div className="text-left">
-            <span className="text-[10px] font-bold tracking-[0.2em] text-gray-400 uppercase block mb-1">Showcase</span>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-red-600 uppercase block mb-1">Showcase</span>
             <h2 className="text-2xl md:text-3xl font-normal tracking-tight text-black font-sans">Öne Çıkan Ürünler</h2>
           </div>
           
