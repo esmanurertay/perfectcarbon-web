@@ -128,6 +128,30 @@
       "gear": "Carbon Rapier Dişli",
       "scissors": "Kesim Makasları"
     }
+  },
+
+  "Footer": {
+    "description": "Dokuma tezgahları için yüksek hassasiyetli, dayanıklı ve hafif karbon fiber rapier bileşenleri tasarımı ve üretimi.",
+    "location": "Gaziantep, Türkiye",
+    "copyright": "Copyright © {year} Perfect Carbon Rapier. Tüm hakları saklıdır.",
+    "titles": {
+      "products": "Ürünler",
+      "corporate": "Kurumsal",
+      "support": "İletişim & Destek"
+    },
+    "items": {
+      "bars": "Karbon Rapier Çubukları",
+      "parts": "Yedek Parça Çözümleri",
+      "chassis": "Özel Tasarım Şasiler",
+      "kits": "Performans Kitleri",
+      "about": "Hakkımızda",
+      "tech": "Üretim Teknolojimiz",
+      "quality": "Kalite Standartları",
+      "career": "Kariyer",
+      "requests": "Müşteri Talepleri",
+      "technical": "Teknik Destek",
+      "headquarters": "Genel Merkez"
+    }
   }
 
 

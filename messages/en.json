@@ -123,6 +123,30 @@
       "gear": "Carbon Rapier Gear",
       "scissors": "Cutting Scissors"
     }
+  },
+
+  "Footer": {
+    "description": "Design and manufacture of high-precision, durable, and lightweight carbon fiber rapier components for weaving looms.",
+    "location": "Gaziantep, Turkey",
+    "copyright": "Copyright © {year} Perfect Carbon Rapier. All rights reserved.",
+    "titles": {
+      "products": "Products",
+      "corporate": "Corporate",
+      "support": "Contact & Support"
+    },
+    "items": {
+      "bars": "Carbon Rapier Bars",
+      "parts": "Spare Parts Solutions",
+      "chassis": "Custom Design Chassis",
+      "kits": "Performance Kits",
+      "about": "About Us",
+      "tech": "Production Technology",
+      "quality": "Quality Standards",
+      "career": "Careers",
+      "requests": "Customer Requests",
+      "technical": "Technical Support",
+      "headquarters": "Headquarters"
+    }
   }
 
 }

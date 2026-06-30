@@ -1,45 +1,47 @@
 "use client";
 
 import React from 'react';
+import { useTranslations } from 'next-intl';
+import Link from 'next/link';
 
 export default function Footer() {
+  const t = useTranslations('Footer');
   const currentYear = new Date().getFullYear();
 
-  // Menü link yapıları - Şasi ve yedek parça mühendisliğine uygun kurumsal başlıklar
+  // Çeviri anahtarlarına göre yapılandırılmış dinamik menü yapısı
   const links = [
     {
-      title: "Ürünler",
+      title: t('titles.products'),
       items: [
-        { name: "Karbon Rapier Çubukları", href: "#products" },
-        { name: "Yedek Parça Çözümleri", href: "#products" },
-        { name: "Özel Tasarım Şasiler", href: "#products" },
-        { name: "Performans Kitleri", href: "#products" }
+        { name: t('items.bars'), href: "#products" },
+        { name: t('items.parts'), href: "#products" },
+        { name: t('items.chassis'), href: "#products" },
+        { name: t('items.kits'), href: "#products" }
       ]
     },
     {
-      title: "Kurumsal",
+      title: t('titles.corporate'),
       items: [
-        { name: "Hakkımızda", href: "#about" },
-        { name: "Üretim Teknolojimiz", href: "#process" },
-        { name: "Kalite Standartları", href: "#process" },
-        { name: "Kariyer", href: "#" }
+        { name: t('items.about'), href: "#about" },
+        { name: t('items.tech'), href: "#process" },
+        { name: t('items.quality'), href: "#process" },
+        { name: t('items.career'), href: "#" }
       ]
     },
     {
-      title: "İletişim & Destek",
+      title: t('titles.support'),
       items: [
-        { name: "Müşteri Talepleri", href: "#contact" },
-        { name: "Teknik Destek", href: "mailto:info@perfectcarbonrapier.com" },
-        { name: "Genel Merkez", href: "#contact" }
+        { name: t('items.requests'), href: "#contact" },
+        { name: t('items.technical'), href: "mailto:info@perfectcarbonrapier.com" },
+        { name: t('items.headquarters'), href: "#contact" }
       ]
     }
   ];
 
   return (
-    /* Arka plan açık tonlara (#f9f9f9 veya bg-neutral-50) çekildi, metinler belirginleştirildi */
     <footer className="w-full bg-[#f9f9f9] text-neutral-600 pt-20 pb-12 px-6 md:px-12 relative overflow-hidden border-t border-neutral-200">
       
-      {/* JUNCTION MASK: Üst bileşenden gelen geçişi light temaya uygun, hafif kırmızımsı bir sıcaklıkla eritir */}
+      {/* JUNCTION MASK */}
       <div className="absolute top-0 left-0 right-0 h-16 bg-gradient-to-b from-red-500/5 to-transparent pointer-events-none" />
 
       <div className="w-full max-w-7xl mx-auto relative z-10">
@@ -47,20 +49,19 @@ export default function Footer() {
         {/* ÜST DÜZEY: Kurumsal Bilgi ve Navigasyon Link Grupları */}
         <div className="grid grid-cols-2 md:grid-cols-12 gap-10 md:gap-8 pb-16">
           
-          {/* Logo ve Kısa Tanım Alanı (4 Kolon) */}
+          {/* Logo ve Kısa Tanım Alanı */}
           <div className="col-span-2 md:col-span-4 flex flex-col items-start gap-4">
-            {/* Logo Bölümü */}
-            <a href="#home" className="flex items-center gap-2 cursor-pointer">
+            <Link href="#home" className="flex items-center gap-2 cursor-pointer">
               <div className="w-auto h-12 relative">
                 <img src="/images/perfect-logo 1.svg" alt="Perfect Carbon Rapier Logo" className="w-auto h-14 object-cover" />
               </div>
-            </a>
+            </Link>
             <p className="text-xs text-neutral-500 max-w-xs leading-relaxed">
-              Dokuma tezgahları için yüksek hassasiyetli, dayanıklı ve hafif karbon fiber rapier bileşenleri tasarımı ve üretimi.
+              {t('description')}
             </p>
           </div>
 
-          {/* Dinamik Link Grupları (Her biri 2-3 kolon kaplayacak şekilde dağıtıldı) */}
+          {/* Dinamik Link Grupları */}
           <div className="col-span-2 md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-8">
             {links.map((group, index) => (
               <div key={index} className="flex flex-col items-start gap-4">
@@ -70,12 +71,21 @@ export default function Footer() {
                 <ul className="flex flex-col items-start gap-2.5">
                   {group.items.map((item, itemIdx) => (
                     <li key={itemIdx}>
-                      <a 
-                        href={item.href} 
-                        className="text-xs text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-normal"
-                      >
-                        {item.name}
-                      </a>
+                      {item.href.startsWith('mailto:') ? (
+                        <a 
+                          href={item.href} 
+                          className="text-xs text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-normal"
+                        >
+                          {item.name}
+                        </a>
+                      ) : (
+                        <Link 
+                          href={item.href} 
+                          className="text-xs text-neutral-600 hover:text-neutral-900 transition-colors duration-300 font-normal"
+                        >
+                          {item.name}
+                        </Link>
+                      )}
                     </li>
                   ))}
                 </ul>
@@ -90,7 +100,7 @@ export default function Footer() {
           
           {/* Telif Hakkı Bloğu ve Geliştirici İmzası */}
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
-            <span>Copyright © {currentYear} Perfect Carbon Rapier. Tüm hakları saklıdır.</span>
+            <span>{t('copyright', { year: currentYear })}</span>
             <span className="text-neutral-300 hidden sm:inline">|</span>
             <span className="flex items-center gap-1">
               Developed by{" "}
@@ -107,7 +117,7 @@ export default function Footer() {
 
           {/* Menşei ve Lokasyon Künyesi */}
           <div className="flex items-end gap-4 text-neutral-400">
-            <span>Gaziantep, Türkiye</span>
+            <span>{t('location')}</span>
           </div>
 
         </div>
