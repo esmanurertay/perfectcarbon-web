@@ -1,16 +1,19 @@
 {
+
   "Hero": {
-    "title1": "Dokumanın özünü",
-    "title2": "",
-    "title3": "mükemmelleştiriyoruz",
-    "description": "Yüksek performanslı dokuma makineleri için mikrometre düzeyinde hassasiyet. Karbon fiber teknolojisiyle üretilen dayanıklı yedek parçalar.",
+    "headline": {
+      "line1": "Dokumanın özünü",
+      "line2": "",
+      "highlight": "mükemmelleştir"
+    },
+    "description": "Karbon fiber teknolojisiyle üretilen, mikrometre hassasiyetine sahip dayanıklı yedek parçalar. Yüksek performanslı dokuma makineleri için tasarlandı.",
     "btnDiscover": "Ürün Kataloğunu Keşfet",
-    "btnDetails": "Teknik Detay Alın",
+    "btnDetails": "Teknik Bilgi Alın",
     "products": {
-      "p1_name": "Carbon Rapier",
-      "p2_name": "Kesim Makasları",
-      "p3_name": "Carbon Rapier Dişli",
-      "p4_name": "Carbon Rapier Başlıkları"
+      "p1_name": "Karbon Rapier Çubuğu",
+      "p2_name": "Rapier Tahrik Dişlisi",
+      "p3_name": "Karbon Rapier Makası",
+      "p4_name": "Rapier Şasi Bileşeni"
     }
   },
 
@@ -21,6 +24,7 @@
     "paragraph1": "Perfect Carbon Rapier olarak, endüstriyel halı dokuma sektöründe yüksek performans ve mikrometre düzeyinde hassasiyeti yeniden tanımlıyoruz. Van de Wiele, Dornier ve Schönherr gibi dünya devi dokuma sistemlerinin sınırlarını zorlamak için en üst segment karbon kompozit teknolojilerini kullanıyoruz.",
     "paragraph2": "Ürettiğimiz hafifletilmiş karbon mekikler, kancalı şeritler ve yüksek devirli mekanik bileşenler, tezgah duruş sürelerinizi minimuma indirirken üretim hatlarınızın maksimum RPM kapasitesine pürüzsüzce ulaşmasını sağlar. Mühendislikten teslimata kadar geçen her adımda, geleceğin dokuma teknolojisini bugünün fabrikalarına entegre ediyoruz."
   },
+
   "Stats": {
     "badge": "İstatistikler",
     "title": "Rakamlarla mükemmellik",

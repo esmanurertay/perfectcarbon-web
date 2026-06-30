@@ -1,9 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 
-// Sabit olan (dile göre değişmeyen) teknik verileri burada tutuyoruz
 const productsConfig = [
   {
     id: 1,
@@ -57,6 +56,8 @@ const productsConfig = [
 
 export default function Hero() {
   const t = useTranslations('Hero');
+  const locale = useLocale(); // Aktif dili öğreniyoruz ('tr' veya 'en')
+  
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -81,8 +82,9 @@ export default function Hero() {
       <div className="absolute inset-0 w-full h-full pointer-events-none z-10 hidden md:block">
         {productsConfig.map((item, index) => {
           const isActive = activeIndex === index;
-          // Ürün adını dilli olarak çekiyoruz
-          const productName = t(`products.${item.translationKey}`);
+          const productName = t.has(`products.${item.translationKey}`) 
+            ? t(`products.${item.translationKey}`) 
+            : item.brand;
 
           return (
             <div
@@ -114,11 +116,6 @@ export default function Hero() {
                   <div className="absolute inset-0 flex items-center justify-center text-[9px] font-mono text-neutral-200 tracking-widest uppercase select-none z-0">
                     {item.brand.split(' ')[0]}
                   </div>
-                  
-                  <span className={`absolute top-2 right-2 text-[8px] font-mono px-1.5 py-0.5 rounded border transition-colors duration-500
-                    ${isActive ? 'bg-red-50 text-red-500 border-red-100' : 'bg-neutral-50 text-neutral-400 border-neutral-100'}`}>
-                    {item.meta}
-                  </span>
                 </div>
 
                 {/* Kimlik & Teknik Bilgiler */}
@@ -128,19 +125,12 @@ export default function Hero() {
                       {item.brand}
                     </span>
                     <span className={`w-1 h-1 rounded-full transition-colors ${isActive ? 'bg-red-500' : 'bg-neutral-300'}`}></span>
-                    <span className="text-[9px] font-medium text-neutral-400">
-                      {item.spec.split(':')[0]}
-                    </span>
                   </div>
                   
                   <h3 className={`text-sm font-medium tracking-tight leading-snug transition-colors duration-500
                     ${isActive ? 'text-red-600' : 'text-black'}`}>
                     {productName}
                   </h3>
-                  
-                  <p className="text-[11px] text-neutral-400 mt-0.5 font-sans truncate w-full">
-                    {item.spec}
-                  </p>
                 </div>
 
               </div>
@@ -152,26 +142,48 @@ export default function Hero() {
       {/* MAIN TEXT AREA */}
       <div className="relative z-20 max-w-4xl mx-auto text-center flex flex-col items-center justify-center pointer-events-auto">
         
-        {/* Üst Badge */}
+        {/* Üst Badge - Mobilde taşmayı önleyen akıllı geçiş */}
         <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/80 backdrop-blur-md border border-neutral-200/60 rounded-full mb-8 opacity-0 animate-fade-in-up shadow-sm">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600"></span>
           </span>
-          <span className="text-[9px] font-bold tracking-[0.2em] text-neutral-600 uppercase">
-            Van de Wiele • Dornier • Schönherr Components
+          <span className="text-[9px] font-bold tracking-[0.15em] text-neutral-600 uppercase text-center px-1">
+            <span className="hidden sm:inline">
+              Van de Wiele • Dornier • Schönherr Components
+            </span>
+            <span className="sm:hidden">
+              Premium Components
+            </span>
           </span>
         </div>
 
-        {/* Sinematik Başlık */}
-        <h1 className="text-5xl sm:text-7xl lg:text-8xl font-normal font-sans text-black tracking-tight leading-[1.02] mb-8 opacity-0 animate-fade-in-up delay-100">
-          {t('title1')} <br />
-          {t('title2')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-red-600 to-black font-semibold">{t('title3')}</span>
+        {/* Sinematik Başlık - Locale bazlı küçülen ve text-balance kullanan akıllı başlık */}
+        <h1 
+          className={`
+            font-normal 
+            font-sans 
+            text-black 
+            tracking-tight 
+            leading-[1.02] 
+            mb-8 
+            text-balance
+            opacity-0 
+            animate-fade-in-up 
+            delay-100
+            ${locale === "tr" 
+              ? "text-4xl sm:text-6xl lg:text-7xl" 
+              : "text-5xl sm:text-7xl lg:text-8xl"
+            }
+          `}
+        >
+          {t('headline.line1')} <br />
+          {t('headline.line2')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-red-600 to-black font-semibold">{t('headline.highlight')}</span>
           <span className="text-red-600">.</span>
         </h1>
 
         {/* Açıklama Metni */}
-        <p className="text-base sm:text-lg text-neutral-400 font-normal max-w-xl leading-relaxed mb-12 opacity-0 animate-fade-in-up delay-200">
+        <p className="text-base sm:text-lg text-neutral-400 font-normal max-w-xl leading-relaxed mb-12 opacity-0 animate-fade-in-up delay-200 text-balance">
           {t('description')}
         </p>
 
@@ -194,7 +206,9 @@ export default function Hero() {
       <div className="w-full mt-16 md:hidden relative z-30 opacity-0 animate-fade-in-up delay-300">
         <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory px-2">
           {productsConfig.map((item) => {
-            const productName = t(`products.${item.translationKey}`);
+            const productName = t.has(`products.${item.translationKey}`) 
+              ? t(`products.${item.translationKey}`) 
+              : item.brand;
             return (
               <div key={item.id} className="w-[250px] shrink-0 bg-neutral-50 border border-neutral-100 rounded-2xl p-4 snap-start">
                 <div className="w-full h-24 bg-white border border-neutral-100/50 rounded-xl flex items-center justify-center p-4 text-[10px] text-neutral-300 font-mono">
@@ -208,7 +222,6 @@ export default function Hero() {
                 <div className="mt-3 text-left">
                   <span className="text-[9px] font-bold text-red-600 uppercase tracking-wider block">{item.brand}</span>
                   <span className="text-sm font-medium text-black block truncate mt-0.5">{productName}</span>
-                  <span className="text-[11px] text-neutral-400 block mt-0.5">{item.spec}</span>
                 </div>
               </div>
             );

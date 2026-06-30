@@ -1,16 +1,18 @@
 {
-  "Hero": {
-    "title1": "Perfecting",
-    "title2": "the core of",
-    "title3": "weaving",
+"Hero": {
+    "headline": {
+      "line1": "Perfecting",
+      "line2": "the core of",
+      "highlight": "weaving"
+    },
     "description": "Micrometer precision for high-performance weaving machines. Durable spare parts manufactured with carbon fiber technology.",
     "btnDiscover": "Discover Product Catalog",
     "btnDetails": "Get Technical Details",
     "products": {
-      "p1_name": "Carbon Rapier",
-      "p2_name": "Cutting Scissors",
-      "p3_name": "Carbon Rapier Gear",
-      "p4_name": "Carbon Rapier Heads"
+      "p1_name": "Carbon Rapier Bar",
+      "p2_name": "Rapier Drive Gear",
+      "p3_name": "Carbon Rapier Scissors",
+      "p4_name": "Rapier Chassis Component"
     }
   },
 
