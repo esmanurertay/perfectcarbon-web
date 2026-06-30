@@ -1,11 +1,10 @@
 import { createNavigation } from 'next-intl/navigation';
 
-export const locales = ['tr', 'en'] as const;
-export const defaultLocale = 'tr' as const;
+export const locales = ['en', 'tr'] as const; // 'en' dilini başa almak her zaman iyi bir pratiktir
+export const defaultLocale = 'en' as const; // Varsayılan dili 'en' yaptık
 
-// pathnames ve localePrefix'i boş nesne ve standart ayarlarla vererek tanımlıyoruz
 export const { Link, redirect, usePathname, useRouter, getPathname } = createNavigation({
   locales,
   defaultLocale,
-  localePrefix: 'always' // ya da projenize göre 'as-needed' yapabilirsiniz
+  localePrefix: 'always' // veya isteğe göre 'as-needed'
 });

@@ -1,13 +1,12 @@
-import {getRequestConfig} from 'next-intl/server';
-import {hasLocale} from 'next-intl';
-import {locales, defaultLocale} from '@/navigation';
+import { getRequestConfig } from 'next-intl/server';
 
-export default getRequestConfig(async ({requestLocale}) => {
-  const requested = await requestLocale;
+export default getRequestConfig(async ({ requestLocale }) => {
+  let locale = await requestLocale;
 
-  const locale = hasLocale(locales, requested)
-    ? requested
-    : defaultLocale;
+  // Eğer geçerli bir locale algılanamazsa varsayılan olarak 'en' atıyoruz
+  if (!locale) {
+    locale = 'en';
+  }
 
   return {
     locale,
