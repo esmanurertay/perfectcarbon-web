@@ -1,9 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import { sendEmail } from '@/app/actions/sendEmail';
 
 export default function Contact() {
+  const t = useTranslations('Contact');
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isPending, setIsPending] = useState(false);
@@ -21,55 +23,57 @@ export default function Contact() {
     const result = await sendEmail(new FormData(event.currentTarget));
     setIsPending(false);
     if (result.success) {
-      setStatus({ type: 'success', text: 'Talebiniz başarıyla iletildi.' });
+      setStatus({ type: 'success', text: t('status.success') });
       event.currentTarget.reset();
     } else {
-      setStatus({ type: 'error', text: 'Bir hata oluştu, lütfen tekrar deneyin.' });
+      setStatus({ type: 'error', text: t('status.error') });
     }
   };
 
   return (
-    /* Arka plan tam istediğin gibi soldan sağa doğru (bg-gradient-to-r) #090909'dan red-500'e kesintisiz akıyor */
     <section ref={sectionRef} className="w-full bg-gradient-to-r from-[#090909] to-red-500 pt-32 pb-40 px-6 md:px-12 relative overflow-hidden text-white">
       
-      {/* SPATIAL MASK: Yatay gradyan geçişinin sol sınırda yumuşak erimesi için sol sınıra loş bir yumuşatıcı koyduk */}
+      {/* SPATIAL MASK */}
       <div className="absolute top-0 bottom-0 left-0 w-24 bg-gradient-to-r from-[#090909] to-transparent pointer-events-none z-0" />
 
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24 items-start relative z-10">
         
-        {/* SOL ALAN: Güçlü Tipografi & İletişim Bilgileri */}
+        {/* SOL ALAN */}
         <div className={`lg:col-span-5 flex flex-col items-start text-left transition-all duration-1000 ${isInView ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'}`}>
-          <span className="text-[10px] font-bold tracking-[0.25em] text-neutral-400 uppercase mb-4">Get in touch</span>
+          <span className="text-[10px] font-bold tracking-[0.25em] text-neutral-400 uppercase mb-4">
+            {t('badge')}
+          </span>
           <h2 className="text-4xl md:text-5xl font-normal font-sans tracking-tight leading-[1.05] mb-8">
-            Let’s engineer <br />
-            your next leap<span className="text-white/30">.</span>
+            {t('title1')} <br />
+            {t('title2')}<span className="text-white/30">.</span>
           </h2>
           <p className="text-sm text-neutral-400 font-normal max-w-sm leading-relaxed mb-10">
-            Tezgah duruş sürelerinizi minimuma indirmek ve en dayanıklı karbon yedek parçaları planlamak için formu doldurun veya doğrudan bize yazın.
+            {t('description')}
           </p>
 
-          {/* İletişim Bilgileri (E-Posta ve Konum) */}
+          {/* İletişim Bilgileri */}
           <div className="flex flex-col gap-6 w-full mb-10">
             <div className="flex flex-col gap-1.5">
-              <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest">E-posta</span>
+              <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest">
+                {t('emailLabel')}
+              </span>
               <a href="mailto:info@perfectcarbonrapier.com" className="text-base font-medium text-white hover:text-white/80 transition-colors border-b border-white/10 pb-0.5 w-fit">
                 info@perfectcarbonrapier.com
               </a>
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest">Konum</span>
-              {/* Adresi kendi firmanıza göre değiştirebilirsiniz */}
-              <p className="text-base font-medium text-white leading-relaxed">
-                Organize Sanayi Bölgesi, 1. Cadde No: 5 <br />
-                Şehitkamil / Gaziantep, Türkiye
+              <span className="text-[9px] font-bold text-neutral-400 uppercase tracking-widest">
+                {t('locationLabel')}
+              </span>
+              <p className="text-base font-medium text-white leading-relaxed whitespace-pre-line">
+                {t('address')}
               </p>
             </div>
           </div>
 
-          {/* Harita Alanı (Google Maps iframe) */}
+          {/* Harita Alanı */}
           <div className="w-full h-48 sm:h-56 rounded-xl overflow-hidden shadow-2xl shadow-black/20 border border-white/10 relative group">
-            {/* Haritanın üzerine gelindiğinde renklerin canlanması için transition eklendi */}
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3183.123456789012!2d37.3197177!3d37.1121175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzfCsDA2JzQzLjYiTiAzN8KwMTknMTEuMCJF!5e0!3m2!1str!2str!4v1690000000000!5m2!1str!2str"
               width="100%"
@@ -83,7 +87,7 @@ export default function Contact() {
           </div>
         </div>
 
-        {/* SAĞ ALAN: Zeminle %100 Bütünleşen, Çizgisiz Saf Akışkan Form */}
+        {/* SAĞ ALAN: Form */}
         <div className={`lg:col-span-7 w-full transition-all duration-1000 delay-200 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-12'}`}>
           <form onSubmit={handleSubmit} className="w-full flex flex-col gap-12 pt-2 lg:pt-8">
             
@@ -94,7 +98,7 @@ export default function Contact() {
                   required 
                   type="text" 
                   name="name" 
-                  placeholder="Ad Soyad / Firma *" 
+                  placeholder={t('placeholders.name')} 
                   className="w-full pb-4 bg-transparent border-b border-white/10 text-white text-base font-normal placeholder-white/30 outline-none focus:border-white transition-colors"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-white scale-x-0 group-focus-within:scale-x-100 transition-transform origin-left duration-500" />
@@ -105,19 +109,19 @@ export default function Contact() {
                   required 
                   type="email" 
                   name="email" 
-                  placeholder="E-Posta Adresi *" 
+                  placeholder={t('placeholders.email')} 
                   className="w-full pb-4 bg-transparent border-b border-white/10 text-white text-base font-normal placeholder-white/30 outline-none focus:border-white transition-colors"
                 />
                 <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-white scale-x-0 group-focus-within:scale-x-100 transition-transform origin-left duration-500" />
               </div>
             </div>
 
-            {/* Telefon Numarası - Opsiyonel */}
+            {/* Telefon Numarası */}
             <div className="flex flex-col items-start w-full relative group">
               <input 
                 type="tel" 
                 name="phone" 
-                placeholder="Telefon Numarası (Opsiyonel)" 
+                placeholder={t('placeholders.phone')} 
                 className="w-full pb-4 bg-transparent border-b border-white/10 text-white text-base font-normal placeholder-white/30 outline-none focus:border-white transition-colors"
               />
               <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-white scale-x-0 group-focus-within:scale-x-100 transition-transform origin-left duration-500" />
@@ -129,7 +133,7 @@ export default function Contact() {
                 required 
                 name="message" 
                 rows={3} 
-                placeholder="Mesajınız nedir? *" 
+                placeholder={t('placeholders.message')} 
                 className="w-full pb-4 bg-transparent border-b border-white/10 text-white text-base font-normal placeholder-white/30 outline-none focus:border-white transition-colors resize-none min-h-[90px]"
               />
               <div className="absolute bottom-0 left-0 right-0 h-[1.5px] bg-white scale-x-0 group-focus-within:scale-x-100 transition-transform origin-left duration-500" />
@@ -145,13 +149,12 @@ export default function Contact() {
                 )}
               </div>
               
-              {/* Buton: Koyu/Kırmızı zeminde muazzam parlayan net Apple Beyazı fırlama buton */}
               <button 
                 disabled={isPending}
                 type="submit"
                 className="w-full sm:w-auto bg-white text-black hover:bg-neutral-100 disabled:bg-neutral-400 text-sm font-medium uppercase tracking-widest px-12 h-13 rounded-full flex items-center justify-center gap-2 transition-all hover:-translate-y-0.5 active:scale-98 shadow-2xl shadow-white/5"
               >
-                {isPending ? 'İletiliyor...' : 'Gönder'}
+                {isPending ? t('status.sending') : t('status.send')}
               </button>
             </div>
 

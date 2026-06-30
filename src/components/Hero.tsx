@@ -1,12 +1,14 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 
-const products = [
+// Sabit olan (dile göre değişmeyen) teknik verileri burada tutuyoruz
+const productsConfig = [
   {
     id: 1,
     brand: 'Van de Wiele',
-    name: 'Carbon Rapier',
+    translationKey: 'p1_name',
     spec: '',
     meta: '',
     position: 'top-[16%] left-[4%] lg:left-[8%]',
@@ -18,7 +20,7 @@ const products = [
   {
     id: 2,
     brand: 'Dornier',
-    name: 'Kesim Makasları',
+    translationKey: 'p2_name',
     spec: '',
     meta: '',
     position: 'bottom-[12%] left-[6%] lg:left-[12%]',
@@ -30,7 +32,7 @@ const products = [
   {
     id: 3,
     brand: 'Schönherr',
-    name: 'Carbon Rapier Dişli',
+    translationKey: 'p3_name',
     spec: '',
     meta: '',
     position: 'top-[22%] right-[4%] lg:right-[8%]',
@@ -42,7 +44,7 @@ const products = [
   {
     id: 4,
     brand: 'Van de Wiele',
-    name: 'Carbon Rapier Başlıkları',
+    translationKey: 'p4_name',
     spec: '',
     meta: '',
     position: 'bottom-[16%] right-[5%] lg:right-[14%]',
@@ -54,6 +56,7 @@ const products = [
 ];
 
 export default function Hero() {
+  const t = useTranslations('Hero');
   const [activeIndex, setActiveIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
 
@@ -61,7 +64,7 @@ export default function Hero() {
     if (isHovered) return;
 
     const interval = setInterval(() => {
-      setActiveIndex((prevIndex) => (prevIndex + 1) % products.length);
+      setActiveIndex((prevIndex) => (prevIndex + 1) % productsConfig.length);
     }, 3000);
 
     return () => clearInterval(interval);
@@ -76,8 +79,10 @@ export default function Hero() {
 
       {/* 3D FLOATING CANVAS */}
       <div className="absolute inset-0 w-full h-full pointer-events-none z-10 hidden md:block">
-        {products.map((item, index) => {
+        {productsConfig.map((item, index) => {
           const isActive = activeIndex === index;
+          // Ürün adını dilli olarak çekiyoruz
+          const productName = t(`products.${item.translationKey}`);
 
           return (
             <div
@@ -97,11 +102,11 @@ export default function Hero() {
                   }`}
               >
                 
-                {/* Resim Alanı - Görseller max-h-16 ve p-6 ile küçültüldü */}
+                {/* Resim Alanı */}
                 <div className="w-full h-28 bg-white rounded-xl border border-neutral-50/50 flex items-center justify-center p-6 relative overflow-hidden shadow-[inset_0_2px_8px_rgba(0,0,0,0.01)]">
                   <img 
                     src={item.image} 
-                    alt={item.name} 
+                    alt={productName} 
                     className={`max-w-full max-h-16 object-contain filter drop-shadow-sm transition-transform duration-500 z-10
                       ${isActive ? 'scale-105' : 'scale-100'}`}
                     onError={(e) => { e.currentTarget.style.display = 'none'; }}
@@ -130,7 +135,7 @@ export default function Hero() {
                   
                   <h3 className={`text-sm font-medium tracking-tight leading-snug transition-colors duration-500
                     ${isActive ? 'text-red-600' : 'text-black'}`}>
-                    {item.name}
+                    {productName}
                   </h3>
                   
                   <p className="text-[11px] text-neutral-400 mt-0.5 font-sans truncate w-full">
@@ -160,51 +165,54 @@ export default function Hero() {
 
         {/* Sinematik Başlık */}
         <h1 className="text-5xl sm:text-7xl lg:text-8xl font-normal font-sans text-black tracking-tight leading-[1.02] mb-8 opacity-0 animate-fade-in-up delay-100">
-          Perfecting <br />
-          the core of <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-red-600 to-black font-semibold">weaving</span>
+          {t('title1')} <br />
+          {t('title2')} <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-red-600 to-black font-semibold">{t('title3')}</span>
           <span className="text-red-600">.</span>
         </h1>
 
         {/* Açıklama Metni */}
         <p className="text-base sm:text-lg text-neutral-400 font-normal max-w-xl leading-relaxed mb-12 opacity-0 animate-fade-in-up delay-200">
-          Yüksek performanslı dokuma makineleri için mikrometre düzeyinde hassasiyet. Karbon fiber teknolojisiyle üretilen dayanıklı yedek parçalar.
+          {t('description')}
         </p>
 
         {/* İnteraktif Aksiyon Butonları */}
         <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto opacity-0 animate-fade-in-up delay-300">
           <button className="w-full sm:w-auto bg-black hover:bg-neutral-900 text-white text-sm font-medium px-8 py-4 rounded-full flex items-center justify-center gap-3 transition-all shadow-md hover:shadow-xl hover:-translate-y-0.5 group">
-            Ürün Kataloğunu Keşfet
+            {t('btnDiscover')}
             <svg className="w-3.5 h-3.5 text-neutral-400 group-hover:text-white group-hover:translate-x-0.5 transition-all" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
             </svg>
           </button>
           <button className="w-full sm:w-auto border border-neutral-200 hover:border-neutral-300 bg-white/40 backdrop-blur-md text-neutral-800 text-sm font-medium px-8 py-4 rounded-full transition-all hover:bg-white hover:-translate-y-0.5">
-            Teknik Detay Alın
+            {t('btnDetails')}
           </button>
         </div>
 
       </div>
 
-      {/* MOBILE BREAKOUT - Mobil görünümdeki resim alanları da max-h-16 ile küçültüldü */}
+      {/* MOBILE BREAKOUT */}
       <div className="w-full mt-16 md:hidden relative z-30 opacity-0 animate-fade-in-up delay-300">
         <div className="flex gap-4 overflow-x-auto pb-4 no-scrollbar snap-x snap-mandatory px-2">
-          {products.map((item) => (
-            <div key={item.id} className="w-[250px] shrink-0 bg-neutral-50 border border-neutral-100 rounded-2xl p-4 snap-start">
-              <div className="w-full h-24 bg-white border border-neutral-100/50 rounded-xl flex items-center justify-center p-4 text-[10px] text-neutral-300 font-mono">
-                <img 
-                  src={item.image} 
-                  alt={item.name} 
-                  className="max-w-full max-h-14 object-contain filter drop-shadow-sm"
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }}
-                />
+          {productsConfig.map((item) => {
+            const productName = t(`products.${item.translationKey}`);
+            return (
+              <div key={item.id} className="w-[250px] shrink-0 bg-neutral-50 border border-neutral-100 rounded-2xl p-4 snap-start">
+                <div className="w-full h-24 bg-white border border-neutral-100/50 rounded-xl flex items-center justify-center p-4 text-[10px] text-neutral-300 font-mono">
+                  <img 
+                    src={item.image} 
+                    alt={productName} 
+                    className="max-w-full max-h-14 object-contain filter drop-shadow-sm"
+                    onError={(e) => { e.currentTarget.style.display = 'none'; }}
+                  />
+                </div>
+                <div className="mt-3 text-left">
+                  <span className="text-[9px] font-bold text-red-600 uppercase tracking-wider block">{item.brand}</span>
+                  <span className="text-sm font-medium text-black block truncate mt-0.5">{productName}</span>
+                  <span className="text-[11px] text-neutral-400 block mt-0.5">{item.spec}</span>
+                </div>
               </div>
-              <div className="mt-3 text-left">
-                <span className="text-[9px] font-bold text-red-600 uppercase tracking-wider block">{item.brand}</span>
-                <span className="text-sm font-medium text-black block truncate mt-0.5">{item.name}</span>
-                <span className="text-[11px] text-neutral-400 block mt-0.5">{item.spec}</span>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

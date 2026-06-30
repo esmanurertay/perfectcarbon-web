@@ -1,0 +1,131 @@
+{
+  "Hero": {
+    "title1": "Dokumanın özünü",
+    "title2": "",
+    "title3": "mükemmelleştiriyoruz",
+    "description": "Yüksek performanslı dokuma makineleri için mikrometre düzeyinde hassasiyet. Karbon fiber teknolojisiyle üretilen dayanıklı yedek parçalar.",
+    "btnDiscover": "Ürün Kataloğunu Keşfet",
+    "btnDetails": "Teknik Detay Alın",
+    "products": {
+      "p1_name": "Carbon Rapier",
+      "p2_name": "Kesim Makasları",
+      "p3_name": "Carbon Rapier Dişli",
+      "p4_name": "Carbon Rapier Başlıkları"
+    }
+  },
+
+  "About": {
+    "badge": "Hakkımızda",
+    "title1": "Dokuma teknolojisinin",
+    "title2": "geleceğini şekillendiriyoruz",
+    "paragraph1": "Perfect Carbon Rapier olarak, endüstriyel halı dokuma sektöründe yüksek performans ve mikrometre düzeyinde hassasiyeti yeniden tanımlıyoruz. Van de Wiele, Dornier ve Schönherr gibi dünya devi dokuma sistemlerinin sınırlarını zorlamak için en üst segment karbon kompozit teknolojilerini kullanıyoruz.",
+    "paragraph2": "Ürettiğimiz hafifletilmiş karbon mekikler, kancalı şeritler ve yüksek devirli mekanik bileşenler, tezgah duruş sürelerinizi minimuma indirirken üretim hatlarınızın maksimum RPM kapasitesine pürüzsüzce ulaşmasını sağlar. Mühendislikten teslimata kadar geçen her adımda, geleceğin dokuma teknolojisini bugünün fabrikalarına entegre ediyoruz."
+  },
+  "Stats": {
+    "badge": "İstatistikler",
+    "title": "Rakamlarla mükemmellik",
+    "labels": {
+      "lightest": "En hafif karbon mekiğimiz",
+      "strength": "Çekme dayanımı",
+      "longer": "Çelikten daha uzun ömürlü",
+      "countries": "Teslimat yapılan ülke"
+    }
+  },
+
+  
+  "Process": {
+    "badge": "Süreç",
+    "title": "Tarımdan teslimata",
+    "topDescription": "Ham karbondan yüksek performanslı yedek parçaya dönüşümün kompakt dikey adımları.",
+    "steps": {
+      "step1": {
+        "tabName": "Mühendislik",
+        "title": "Özel CAD Modelleme",
+        "description": "Tezgah tipinize ve hız gereksinimlerinize özel mikrometre hassasiyetinde CAD modelleme ve simülasyon süreçleri."
+      },
+      "step2": {
+        "tabName": "Üretim",
+        "title": "Gelişmiş Karbon Katmanlama",
+        "description": "Yüksek mukavemetli T800 karbon prepreg katmanların kontrollü basınç altında, otoklavda kusursuz kürlenmesi."
+      },
+      "step3": {
+        "tabName": "Kalite",
+        "title": "Sıkı Stres Testleri",
+        "description": "Üretilen her bir yedek parçanın çekme, esneme ve yüksek RPM yorulma testlerinden başarıyla geçmesi."
+      },
+      "step4": {
+        "tabName": "Teslimat",
+        "title": "Küresel Hızlı Sevkiyat",
+        "description": "Vakumlanmış özel koruyucu paketleme ve tezgah duruş sürelerinizi minimuma indiren küresel ekspres teslimat."
+      }
+    }
+  
+},
+
+  "Brands": {
+    "title": "Dünya çapındaki üreticilerin güveniyle"
+  },
+
+  
+  "Products": {
+    "badge": "Vitrİn",
+    "title": "Öne Çıkan Ürünler",
+    "viewAll": "Tüm Ürünleri Gör",
+    "names": {
+      "p1": "Karbon Mekik",
+      "p2": "Yüksek Devir Dişli",
+      "p3": "Hassas Kesim Makası",
+      "p4": "Teknolojik Şiş",
+      "p5": "Kancalı Şerit",
+      "p6": "Mekik Dişlisi",
+      "p7": "Karbon Rapier Kafa"
+    }
+  },
+
+  "Contact": {
+    "badge": "İletişim",
+    "title1": "Geleceğinizi birlikte",
+    "title2": "şekillendirelim",
+    "description": "Tezgah duruş sürelerinizi minimuma indirmek ve en dayanıklı karbon yedek parçaları planlamak için formu doldurun veya doğrudan bize yazın.",
+    "emailLabel": "E-posta",
+    "locationLabel": "Konum",
+    "address": "Organize Sanayi Bölgesi, 1. Cadde No: 5 \nŞehitkamil / Gaziantep, Türkiye",
+    "placeholders": {
+      "name": "Ad Soyad / Firma *",
+      "email": "E-Posta Adresi *",
+      "phone": "Telefon Numarası (Opsiyonel)",
+      "message": "Mesajınız nedir? *"
+    },
+    "status": {
+      "sending": "İletiliyor...",
+      "send": "Gönder",
+      "success": "Talebiniz başarıyla iletildi.",
+      "error": "Bir hata oluştu, lütfen tekrar deneyin."
+    }
+  },
+
+  
+  "Navbar": {
+    "home": "Ana Sayfa",
+    "about": "Hakkımızda",
+    "products": "Ürünler",
+    "contact": "İletişim",
+    "getInTouch": "İletişime Geçin",
+    "viewAll": "Tüm Ürünleri Gör",
+    "downloadCatalog": "Kataloğu İndir",
+    "brands": {
+      "vdw": "Van de Wiele Çözümleri",
+      "schonherr": "Schönherr Alpha",
+      "dornier": "Dornier Sistemleri"
+    },
+    "links": {
+      "rapier": "Carbon Rapier",
+      "heads": "Carbon Rapier Başlıkları",
+      "gear": "Carbon Rapier Dişli",
+      "scissors": "Kesim Makasları"
+    }
+  }
+
+
+
+}

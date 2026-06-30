@@ -1,13 +1,13 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 // Sayı sayma animasyonu için yardımcı bileşen
 function AnimatedNumber({ value, duration = 1500, startAnimate }: { value: string; duration?: number; startAnimate: boolean }) {
   const [count, setCount] = useState("");
   
   useEffect(() => {
-    // Eğer ekranda değilse sayıyı sıfırla veya başlangıç haline getir
     if (!startAnimate) {
       setCount("");
       return;
@@ -30,7 +30,6 @@ function AnimatedNumber({ value, duration = 1500, startAnimate }: { value: strin
       const elapsed = currentTime - startTime;
       const progress = Math.min(elapsed / duration, 1);
       
-      // Apple tarzı yumuşak yavaşlayan geçiş eğrisi
       const easeProgress = 1 - Math.pow(1 - progress, 3);
       const current = start + easeProgress * (target - start);
 
@@ -52,38 +51,39 @@ function AnimatedNumber({ value, duration = 1500, startAnimate }: { value: strin
     requestAnimationFrame(animate);
   }, [value, duration, startAnimate]);
 
-  // Animasyon başlamadıysa ilk an kaba durmasın diye boşluk yerine 0 veya ham değeri fısıldayabiliriz
   return <span>{count || (value.includes('+') ? "0+" : "0")}</span>;
 }
 
-const statItems = [
+// Statik ve sayısal verileri tutan config dizisi
+const statItemsConfig = [
   {
     id: 1,
     value: '240',
     unit: 'g/m',
-    label: 'Our lightest carbon rapier',
+    translationKey: 'lightest',
   },
   {
     id: 2,
     value: '5,800',
     unit: 'MPa',
-    label: 'Tensile strength',
+    translationKey: 'strength',
   },
   {
     id: 3,
     value: '2.5',
     unit: 'x',
-    label: 'Longer than steel',
+    translationKey: 'longer',
   },
   {
     id: 4,
     value: '40+',
     unit: '',
-    label: 'Countries delivered',
+    translationKey: 'countries',
   },
 ];
 
 export default function Stats() {
+  const t = useTranslations('Stats');
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -93,13 +93,12 @@ export default function Stats() {
         if (entry.isIntersecting) {
           setIsInView(true);
         } else {
-          // Ekrandan çıkınca durumu false yap ki yukarı/aşağı kaydırınca animasyon baştan başlasın
           setIsInView(false);
         }
       },
       { 
-        threshold: 0.1, // Görünürlük hassasiyeti %10
-        rootMargin: "0px 0px -50px 0px" // Alt sınırdan biraz pay bırakarak çıkış hissini netleştirir
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
       }
     );
 
@@ -116,12 +115,12 @@ export default function Stats() {
         
         {/* Üst Küçük Künye */}
         <span className={`text-xs font-bold tracking-[0.2em] text-red-600 uppercase mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          Stats
+          {t('badge')}
         </span>
 
         {/* Bölüm Başlığı */}
         <h2 className={`text-4xl md:text-5xl font-normal font-sans text-black tracking-tight mb-16 transition-all duration-700 delay-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-          Excellence in numbers
+          {t('title')}
         </h2>
 
         {/* İstatistik Ana Paneli */}
@@ -129,8 +128,7 @@ export default function Stats() {
           ${isInView ? 'opacity-100 scale-100 translate-y-0 shadow-[0_20px_50px_rgba(0,0,0,0.02)]' : 'opacity-0 scale-[0.98] translate-y-12'}`}
         >
           
-          {statItems.map((item, index) => {
-            // Sırayla açılma gecikmeleri
+          {statItemsConfig.map((item, index) => {
             const delayClasses = ['delay-[200ms]', 'delay-[350ms]', 'delay-[500ms]', 'delay-[650ms]'];
             
             return (
@@ -159,7 +157,7 @@ export default function Stats() {
 
                 {/* Alt Açıklama Metni */}
                 <p className="text-xs md:text-sm text-gray-400 font-normal leading-relaxed max-w-[180px]">
-                  {item.label}
+                  {t(`labels.${item.translationKey}`)}
                 </p>
 
               </div>

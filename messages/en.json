@@ -1,0 +1,126 @@
+{
+  "Hero": {
+    "title1": "Perfecting",
+    "title2": "the core of",
+    "title3": "weaving",
+    "description": "Micrometer precision for high-performance weaving machines. Durable spare parts manufactured with carbon fiber technology.",
+    "btnDiscover": "Discover Product Catalog",
+    "btnDetails": "Get Technical Details",
+    "products": {
+      "p1_name": "Carbon Rapier",
+      "p2_name": "Cutting Scissors",
+      "p3_name": "Carbon Rapier Gear",
+      "p4_name": "Carbon Rapier Heads"
+    }
+  },
+
+  "About": {
+    "badge": "About Us",
+    "title1": "Crafting the future of",
+    "title2": "weaving technology",
+    "paragraph1": "As Perfect Carbon Rapier, we redefine high performance and micrometer precision in the industrial carpet weaving sector. We use top-tier carbon composite technologies to push the limits of world-leading weaving systems such as Van de Wiele, Dornier, and Schönherr.",
+    "paragraph2": "The lightweight carbon rapiers, rapier tapes, and high-speed mechanical components we manufacture minimize loom downtime while allowing your production lines to smoothly reach maximum RPM capacity. From engineering to delivery, we integrate the weaving technology of the future into today's factories."
+  },
+
+  "Stats": {
+    "badge": "Stats",
+    "title": "Excellence in numbers",
+    "labels": {
+      "lightest": "Our lightest carbon rapier",
+      "strength": "Tensile strength",
+      "longer": "Longer than steel",
+      "countries": "Countries delivered"
+    }
+  },
+
+  "Process": {
+    "badge": "Process",
+    "title": "From design to delivery",
+    "topDescription": "Compact vertical steps of transformation from raw carbon to high-performance spare parts.",
+    "steps": {
+      "step1": {
+        "tabName": "Engineering",
+        "title": "Custom CAD Modeling",
+        "description": "Micrometer-precision CAD modeling and simulation processes specific to your loom type and speed requirements."
+      },
+      "step2": {
+        "tabName": "Production",
+        "title": "Advanced Carbon Layup",
+        "description": "Flawless curing of high-strength T800 carbon prepreg layers in an autoclave under controlled pressure."
+      },
+      "step3": {
+        "tabName": "Quality",
+        "title": "Rigid Stress Testing",
+        "description": "Each manufactured spare part successfully passes tensile, bending, and high-RPM fatigue tests."
+      },
+      "step4": {
+        "tabName": "Delivery",
+        "title": "Global Fast Shipping",
+        "description": "Vacuumed special protective packaging and global express delivery that minimizes your loom downtime."
+      }
+    }
+  },
+
+  "Brands": {
+    "title": "Trusted by manufacturers worldwide"
+  },
+
+  "Products": {
+    "badge": "Showcase",
+    "title": "Featured Products",
+    "viewAll": "View All Products",
+    "names": {
+      "p1": "Carbon Rapier",
+      "p2": "High Speed Gear",
+      "p3": "Precision Cutting Scissors",
+      "p4": "Technological Pin",
+      "p5": "Rapier Tape",
+      "p6": "Rapier Gear",
+      "p7": "Carbon Rapier Head"
+    }
+  },
+
+  "Contact": {
+    "badge": "Get in touch",
+    "title1": "Let’s engineer",
+    "title2": "your next leap",
+    "description": "Fill out the form or write to us directly to minimize your loom downtime and plan the most durable carbon spare parts.",
+    "emailLabel": "Email",
+    "locationLabel": "Location",
+    "address": "Organize Sanayi Bölgesi, 1. Cadde No: 5 \nSehitkamil / Gaziantep, Turkey",
+    "placeholders": {
+      "name": "Full Name / Company *",
+      "email": "Email Address *",
+      "phone": "Phone Number (Optional)",
+      "message": "What is your message? *"
+    },
+    "status": {
+      "sending": "Sending...",
+      "send": "Send",
+      "success": "Your request has been successfully delivered.",
+      "error": "An error occurred, please try again."
+    }
+  },
+
+  "Navbar": {
+    "home": "Home",
+    "about": "About",
+    "products": "Products",
+    "contact": "Contact",
+    "getInTouch": "Get in touch",
+    "viewAll": "View All Products",
+    "downloadCatalog": "Download Catalog",
+    "brands": {
+      "vdw": "Van de Wiele Solutions",
+      "schonherr": "Schönherr Alpha",
+      "dornier": "Dornier Systems"
+    },
+    "links": {
+      "rapier": "Carbon Rapier",
+      "heads": "Carbon Rapier Heads",
+      "gear": "Carbon Rapier Gear",
+      "scissors": "Cutting Scissors"
+    }
+  }
+
+}

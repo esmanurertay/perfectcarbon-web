@@ -1,4 +1,4 @@
-import Navbar from '@/components/Navbar';
+import { useTranslations } from 'next-intl';
 import Hero from '@/components/Hero';
 import Stats from '@/components/Stats';
 import Process from '@/components/Process'; 
@@ -8,28 +8,35 @@ import About from '@/components/About';
 import Contact from '@/components/Contact';
 
 export default function Home() {
+  // JSON dosyalarındaki 'HomePage' anahtarına erişmek için tanımlıyoruz
+  const t = useTranslations('HomePage');
+
   return (
     <main className="relative min-h-screen bg-white antialiased selection:bg-red-500 selection:text-white scroll-smooth">
-      {/* Gezinme Çubuğu */}     
-      <Navbar />
+      
+      {/* NOT: Eğer Navbar'ı layout.tsx dosyasına eklediysen buradan silebilirsin. 
+        Eğer sadece bu sayfada gözüksün istiyorsan kalabilir.
+      */}
 
       {/* Karşılama Alanı (Light) */}
       <div id="home">
         <Hero />
       </div>
       
-    
       {/* Hakkımızda Alanı */}
       <div id="about">
         <About /> 
       </div>
+
       {/* İstatistik Alanı (Light) */}
       <Stats />
 
       {/* Süreç Akış Alanı (Sinematik Dark Geçişi) */}
       <Process /> 
+      
       <Brands /> 
-        {/* Ürünler Alanı */}
+
+      {/* Ürünler Alanı */}
       <div id="products">
         <Products /> 
       </div>

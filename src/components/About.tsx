@@ -1,8 +1,10 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
 export default function About() {
+  const t = useTranslations('About');
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
@@ -12,7 +14,7 @@ export default function About() {
         if (entry.isIntersecting) {
           setIsInView(true);
         } else {
-          setIsInView(false); // Yukarı/aşağı kaydırmada animasyonun tazelenmesi için
+          setIsInView(false);
         }
       },
       { threshold: 0.2 }
@@ -38,13 +40,13 @@ export default function About() {
           
           {/* Üst Küçük Künye */}
           <span className={`text-xs font-bold tracking-[0.2em] text-red-600 uppercase mb-4 transition-all duration-700 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            About Us
+            {t('badge')}
           </span>
 
           {/* Büyük Özgün Başlık */}
           <h2 className={`text-3xl md:text-4xl lg:text-5xl font-normal font-sans text-black tracking-tight leading-[1.1] transition-all duration-700 delay-100 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            Crafting the future of
-            weaving technology<span className="text-red-600">.</span>
+            {t('title1')} <br />
+            {t('title2')}<span className="text-red-600">.</span>
           </h2>
 
           {/* Apple Tarzı Kademeli Uzayan Yatay Kırmızı Aksan Çizgisi */}
@@ -55,11 +57,11 @@ export default function About() {
         <div className="lg:col-span-7 flex flex-col items-start text-left gap-6 pt-2 lg:pt-8">
           
           <p className={`text-base md:text-lg text-neutral-800 font-normal leading-relaxed transition-all duration-1000 delay-250 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            Perfect Carbon Rapier olarak, endüstriyel halı dokuma sektöründe yüksek performans ve mikrometre düzeyinde hassasiyeti yeniden tanımlıyoruz. Van de Wiele, Dornier ve Schönherr gibi dünya devi dokuma sistemlerinin sınırlarını zorlamak için en üst segment karbon kompozit teknolojilerini kullanıyoruz.
+            {t('paragraph1')}
           </p>
 
           <p className={`text-sm md:text-base text-gray-400 font-normal leading-relaxed transition-all duration-1000 delay-400 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'}`}>
-            Ürettiğimiz hafifletilmiş karbon mekikler, kancalı şeritler ve yüksek devirli mekanik bileşenler, tezgah duruş sürelerinizi minimuma indirirken üretim hatlarınızın maksimum RPM kapasitesine pürüzsüzce ulaşmasını sağlar. Mühendislikten teslimata kadar geçen her adımda, geleceğin dokuma teknolojisini bugünün fabrikalarına entegre ediyoruz.
+            {t('paragraph2')}
           </p>
 
         </div>

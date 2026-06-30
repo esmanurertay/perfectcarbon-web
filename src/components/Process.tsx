@@ -1,40 +1,23 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 
-const processSteps = [
-  {
-    id: '01',
-    tabName: 'Engineering',
-    title: 'Custom CAD Modeling',
-    description: 'Tezgah tipinize ve hız gereksinimlerinize özel mikrometre hassasiyetinde CAD modelleme ve simülasyon süreçleri.',
-  },
-  {
-    id: '02',
-    tabName: 'Production',
-    title: 'Advanced Carbon Layup',
-    description: 'Yüksek mukavemetli T800 karbon prepreg katmanların kontrollü basınç altında, otoklavda kusursuz kürlenmesi.',
-  },
-  {
-    id: '03',
-    tabName: 'Quality',
-    title: 'Rigid Stress Testing',
-    description: 'Üretilen her bir yedek parçanın çekme, esneme ve yüksek RPM yorulma testlerinden başarıyla geçmesi.',
-  },
-  {
-    id: '04',
-    tabName: 'Delivery',
-    title: 'Global Fast Shipping',
-    description: 'Vakumlanmış özel koruyucu paketleme ve tezgah duruş sürelerinizi minimuma indiren küresel ekspres teslimat.',
-  },
+// Sabit IDs ve dil dosyalarındaki ilgili alt anahtarları (keys) tutan konfigürasyon
+const processStepsConfig = [
+  { id: '01', key: 'step1' },
+  { id: '02', key: 'step2' },
+  { id: '03', key: 'step3' },
+  { id: '04', key: 'step4' },
 ];
 
 export default function Process() {
+  const t = useTranslations('Process');
   const [activeTab, setActiveTab] = useState(0);
   const [isInView, setIsInView] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
 
-  // Sayfa görünür olduğunda sekmeler arası otomatik döngü (Kullanıcı tıklamadığı sürece)
+  // Sayfa görünür olduğunda sekmeler arası otomatik döngü
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
@@ -52,8 +35,8 @@ export default function Process() {
     if (!isInView) return;
 
     const interval = setInterval(() => {
-      setActiveTab((prev) => (prev + 1) % processSteps.length);
-    }, 4000); // Her 4 saniyede bir sonraki adıma geçer
+      setActiveTab((prev) => (prev + 1) % processStepsConfig.length);
+    }, 4000);
 
     return () => clearInterval(interval);
   }, [isInView]);
@@ -62,21 +45,27 @@ export default function Process() {
     <section ref={sectionRef} className="w-full bg-[#0a0a0a] pt-20 pb-24 px-6 md:px-12 text-white overflow-hidden">
       <div className="w-full max-w-7xl mx-auto flex flex-col items-center">
         
-        {/* ÜST ALAN: Başlık ve Süreç İsmi (Yan yana çok kompakt yerleşim) */}
+        {/* ÜST ALAN */}
         <div className={`w-full flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12 transition-all duration-1000 ${isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
           <div className="text-left">
-            <span className="text-[10px] font-bold tracking-[0.2em] text-red-600 uppercase block mb-2">Process</span>
-            <h2 className="text-3xl md:text-4xl font-normal tracking-tight font-sans">From design to delivery<span className="text-red-600">.</span></h2>
+            <span className="text-[10px] font-bold tracking-[0.2em] text-red-600 uppercase block mb-2">
+              {t('badge')}
+            </span>
+            <h2 className="text-3xl md:text-4xl font-normal tracking-tight font-sans">
+              {t('title')}<span className="text-red-600">.</span>
+            </h2>
           </div>
           <p className="text-xs text-neutral-500 max-w-xs text-left md:text-right font-normal leading-relaxed">
-            Ham karbondan yüksek performanslı yedek parçaya dönüşümün kompakt dikey adımları.
+            {t('topDescription')}
           </p>
         </div>
 
         {/* ORTA ALAN: Apple Tarzı Segmented Kontrol (Sekmeler) */}
         <div className={`w-full flex border-b border-neutral-900 overflow-x-auto no-scrollbar mb-10 transition-all duration-1000 delay-100 ${isInView ? 'opacity-100' : 'opacity-0'}`}>
-          {processSteps.map((step, index) => {
+          {processStepsConfig.map((step, index) => {
             const isActive = activeTab === index;
+            const tabName = t(`steps.${step.key}.tabName`);
+
             return (
               <button
                 key={step.id}
@@ -91,7 +80,7 @@ export default function Process() {
                 {/* Sekme Adı */}
                 <span className={`text-sm font-medium tracking-tight transition-colors duration-300
                   ${isActive ? 'text-white' : 'text-neutral-500 group-hover:text-neutral-300'}`}>
-                  {step.tabName}
+                  {tabName}
                 </span>
                 
                 {/* Aktif Çizgi Efekti */}
@@ -103,20 +92,23 @@ export default function Process() {
           })}
         </div>
 
-        {/* ALT ALAN: İçerik Paneli (Sadece aktif olan adım görünür, pürüzsüz geçişli) */}
+        {/* ALT ALAN: İçerik Paneli */}
         <div className={`w-full bg-[#111111] border border-neutral-900/60 rounded-[24px] p-8 md:p-10 text-left relative min-h-[180px] flex items-center transition-all duration-1000 delay-200
           ${isInView ? 'opacity-100 scale-100 translate-y-0 shadow-[0_25px_50px_rgba(0,0,0,0.3)]' : 'opacity-0 scale-[0.99] translate-y-6'}`}
         >
-          {processSteps.map((step, index) => {
+          {processStepsConfig.map((step, index) => {
             const isActive = activeTab === index;
             if (!isActive) return null;
+
+            const title = t(`steps.${step.key}.title`);
+            const description = t(`steps.${step.key}.description`);
 
             return (
               <div 
                 key={step.id}
                 className="w-full grid grid-cols-1 md:grid-cols-12 gap-6 items-center animate-fade-in-up"
               >
-                {/* Büyük Sayı İllüzyonu (Sol Arka Plan) */}
+                {/* Büyük Sayı İllüzyonu */}
                 <div className="md:col-span-2 hidden md:flex justify-start select-none">
                   <span className="text-6xl font-sans font-light text-neutral-800/40 tracking-tighter">
                     {step.id}
@@ -126,10 +118,10 @@ export default function Process() {
                 {/* Başlık ve Açıklama Metni */}
                 <div className="md:col-span-10 flex flex-col items-start">
                   <h3 className="text-xl md:text-2xl font-normal text-white tracking-tight mb-2 font-sans">
-                    {step.title}
+                    {title}
                   </h3>
                   <p className="text-sm md:text-base text-neutral-400 font-normal leading-relaxed max-w-3xl">
-                    {step.description}
+                    {description}
                   </p>
                 </div>
               </div>
