@@ -2,11 +2,11 @@
 import React, { useState } from 'react';
 import { useTranslations, useLocale } from 'next-intl';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation'; // Next.js navigation hooks
+import { usePathname, useRouter } from 'next/navigation';
 
 export default function Navbar() {
   const t = useTranslations('Navbar');
-  const currentLocale = useLocale(); // Mevcut dili alır ('tr' veya 'en')
+  const currentLocale = useLocale(); // Mevcut dili alır ('en' veya 'tr')
   const pathname = usePathname();
   const router = useRouter();
 
@@ -17,7 +17,7 @@ export default function Navbar() {
   // Dil değiştirme fonksiyonu
   const handleLocaleChange = (newLocale: 'tr' | 'en') => {
     if (currentLocale === newLocale) return;
-    // Ensure we replace any existing locale segment (e.g. /en or /tr) with the new locale
+    
     const segments = (pathname || '/')
       .split('/')
       .filter(Boolean);
@@ -28,7 +28,7 @@ export default function Navbar() {
     router.replace(newPath);
   };
 
-  // Markalar ve dilleştirilmiş link anahtarları
+  // Markalar ve dilleleştirilmiş link anahtarları
   const productBrandsConfig = [
     {
       name: t('brands.vdw'),
@@ -141,20 +141,22 @@ export default function Navbar() {
           </Link>
         </div>
 
-        {/* Sağ Taraf: Dil Seçimi, CTA ve Hamburger Butonu */}
+        {/* Sağ Taraf: Dil Seçimi (Önce EN, Sonra TR), CTA ve Hamburger Butonu */}
         <div className="flex items-center gap-3 md:gap-4">
           <div className="bg-gray-100 p-0.5 rounded-full flex items-center text-[11px] font-bold select-none">
-            <span 
-              onClick={() => handleLocaleChange('tr')}
-              className={`px-2.5 py-1 rounded-full cursor-pointer transition-all ${currentLocale === 'tr' ? 'bg-black text-white' : 'text-gray-400 hover:text-black'}`}
-            >
-              TR
-            </span>
+            {/* EN Butonu İlk Sıraya Taşındı */}
             <span 
               onClick={() => handleLocaleChange('en')}
               className={`px-2.5 py-1 rounded-full cursor-pointer transition-all ${currentLocale === 'en' ? 'bg-black text-white' : 'text-gray-400 hover:text-black'}`}
             >
               EN
+            </span>
+            {/* TR Butonu İkinci Sıraya Taşındı */}
+            <span 
+              onClick={() => handleLocaleChange('tr')}
+              className={`px-2.5 py-1 rounded-full cursor-pointer transition-all ${currentLocale === 'tr' ? 'bg-black text-white' : 'text-gray-400 hover:text-black'}`}
+            >
+              TR
             </span>
           </div>
           
